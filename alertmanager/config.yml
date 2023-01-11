@@ -17,13 +17,13 @@ receivers:
       api_url: 'https://api.telegram.org'
       chat_id: 
       parse_mode: ""
-      message: "Alertmanager \n
-                Type: {{.CommonAnnotations.description}}\n
-                Summary: {{.CommonAnnotations.summary}}\n
+      message: "🔥 Alertmanager \n
+                Type: {{ .CommonAnnotations.description }}\n
+                Summary: {{ .CommonAnnotations.summary }}\n
                 Alertname: {{ .CommonLabels.alertname }}\n
                 Instance: {{ .CommonLabels.instance }}\n
-                Serverity: {{ .CommonLabels.serverity}}\n
-                Status:  {{ .Status }}
+                Severity: {{ .CommonLabels.severity }}\n
+                Status: {{ .Status }}
       "
 
 # templates:
