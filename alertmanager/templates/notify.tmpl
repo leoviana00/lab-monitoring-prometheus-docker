@@ -1,6 +1,10 @@
-Type: {{.CommonAnnotations.description}}
-Summary: {{.CommonAnnotations.summary}}
-Alertname: {{ .CommonLabels.alertname }}
-Instance: {{ .CommonLabels.instance }}
-Serverity: {{ .CommonLabels.serverity}}
-Status:  {{ .Status }}
+{{ define "alert" }}
+  {{ if gt (len .Alerts.Firing) 0 }}
+    {{ len .Alerts.Firing }} firing:
+    {{ range .Alerts.Firing }} {{ template "myalert" .}} {{ end }}
+  {{ end }}
+  {{ if gt (len .Alerts.Resolved) 0 }}
+    {{ len .Alerts.Resolved }} resolved:
+    {{ range .Alerts.Resolved }} {{ template "myalert" .}} {{ end }}
+  {{ end }}
+{{ end }}

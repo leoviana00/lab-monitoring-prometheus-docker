@@ -1,9 +1,18 @@
-# my global config
+# Minhas configurações
+#------------------------------------------------------
+# Anotações rápidas
+# scrape_interval:  com que frequência os alvos são raspados para métricas (o padrão é um minuto)
+# scrape_timeout: o tempo que leva para uma solicitação de raspagem expirar (o padrão é 10 segundos)
+# rule_files: caminho para os arquivos de regras, neste caso, o arquivo de regras de alerta que especifica como lidamos com os alertas quando eles surgem
+# evaluation_interval: com que frequência avaliar as regras (o padrão é 1 minuto)
+#-------------------------------------------------------
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  scrape_interval:     15s # Defina o intervalo de raspagem para cada 15 segundos. O padrão é a cada 1 minuto.
+  evaluation_interval: 15s # Avalie as regras a cada 15 segundos. O padrão é a cada 1 minuto.
 
-# Alertmanager configuration
+#-------------------
+# Configurando o Alertmanager
+#-------------------
 alerting:
   alertmanagers:
     - scheme: http
@@ -11,26 +20,33 @@ alerting:
       - targets:
         - alertmanager:9093
 
-# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+# Carregue as regras uma vez e avalie-as periodicamente de acordo com o 'evaluation_interval' global.
 rule_files:
   - "alert.rules"
 
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
+# Uma configuração de raspagem contendo exatamente um endpoint para raspar
 scrape_configs:
+
+# Aqui é o próprio Prometheus.
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
       - targets: ['localhost:9090']
+        labels:
+          alias: 'prometheus'
 
+# Aqui é o próprio Cadvisor.
   - job_name: cadvisor
     scrape_interval: 5s
     static_configs:
-    - targets:
-      - cadvisor:8080
+    - targets: ['cadvisor:8080']
+      labels:
+        alias: 'cadvisor'
 
+# Aqui é o próprio Nodeexporter.
   - job_name: 'nodeexporter'
     scrape_interval: 5s
     static_configs:
-    - targets: 
-      - nodeexporter:9100
+    - targets: ['nodeexporter:9100']
+      labels:
+        alias: 'nodeexporter'

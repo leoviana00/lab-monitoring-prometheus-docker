@@ -12,24 +12,16 @@ receivers:
 #------------------------------------------------------------------
 - name: 'alertmanager-telegram'
   telegram_configs:
-    - send_resolved: true
+    - send_resolved: false
       bot_token: 
       api_url: 'https://api.telegram.org'
       chat_id: 
-      parse_mode: ""
-      message: "🔥 Alertmanager \n
-                Type: {{ .CommonAnnotations.description }}\n
-                Summary: {{ .CommonAnnotations.summary }}\n
-                Alertname: {{ .CommonLabels.alertname }}\n
-                Instance: {{ .CommonLabels.instance }}\n
-                Severity: {{ .CommonLabels.severity }}\n
-                Status: {{ .Status }}
-      "
+      parse_mode: "HTML"
+      message:  |
+          {{ template "Telegram.title" . }}
+          {{ template "Telegram.severity" . }}
+ 
 
-# templates:
-#  - '/etc/alertmanager/templates/*.html'
-       
-
-
-
-    
+templates:
+ - '/etc/alertmanager/templates/telegram.tmpl'
+          
