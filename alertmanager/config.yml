@@ -1,0 +1,35 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: 'alertmanager-telegram'
+  routes:
+    - receiver: 'alertmanager-telegram'
+
+receivers:
+#------------------------------------------------------------------
+#                   TENTATIVA DE NOTIFY TELEGRAM
+#------------------------------------------------------------------
+- name: 'alertmanager-telegram'
+  telegram_configs:
+    - send_resolved: true
+      bot_token: 
+      api_url: 'https://api.telegram.org'
+      chat_id: 
+      parse_mode: ""
+      message: "Alertmanager \n
+                Type: {{.CommonAnnotations.description}}\n
+                Summary: {{.CommonAnnotations.summary}}\n
+                Alertname: {{ .CommonLabels.alertname }}\n
+                Instance: {{ .CommonLabels.instance }}\n
+                Serverity: {{ .CommonLabels.serverity}}\n
+                Status:  {{ .Status }}
+      "
+
+# templates:
+#  - '/etc/alertmanager/templates/*.html'
+       
+
+
+
+    
