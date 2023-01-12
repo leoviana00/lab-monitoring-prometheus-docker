@@ -60,6 +60,8 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
     depends_on:
       - redis
     labels:
@@ -88,6 +90,15 @@ services:
     restart: unless-stopped
     ports:
       - 9100:9100
+    labels:
+      org.label-schema.group: "monitoring"
+
+  pushgateway:
+    image: prom/pushgateway
+    container_name: pushgateway
+    restart: unless-stopped
+    ports:
+      - 9091:9091
     labels:
       org.label-schema.group: "monitoring"
 
