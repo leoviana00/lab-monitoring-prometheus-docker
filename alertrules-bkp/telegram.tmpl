@@ -1,0 +1,64 @@
+{{/* Link de silêncio do Alertmanager */}}
+{{ define "__alert_silence_link" -}}
+    {{ .ExternalURL }}/#/silences/new?filter=%7B
+    {{- range .CommonLabels.SortedPairs -}}
+        {{- if ne .Name "alertname" -}}
+            {{- .Name }}%3D"{{- .Value -}}"%2C%20
+        {{- end -}}
+    {{- end -}}
+    alertname%3D"{{- .CommonLabels.alertname -}}"%7D
+{{- end }}
+
+{{/* Gravidade do alerta */}}
+{{ define "Telegram.severity" -}}
+    {{- if eq .CommonLabels.severity "critical" -}}
+    Severity: {{ .CommonLabels.severity | toUpper }} 🔴 
+
+    {{- else if eq .CommonLabels.severity "warning" -}}
+    Severity: {{ .CommonLabels.severity | toUpper }} 🌕
+
+    {{- else if eq .CommonLabels.severity "info" -}}
+    Severity: {{ .CommonLabels.severity | toUpper }} 🔵
+    {{- else -}}
+    
+    *Severity:* :question: {{ .CommonLabels.severity }}
+    {{- end }}
+{{- end }}
+
+{{/* Título do alerta do Telegram */}}
+{{ define "Telegram.title" -}}
+    {{if eq .Status "firing"}}
+    Status: [{{ .Status | toUpper -}}:{{ .Alerts.Firing | len }}{{- end -}} 
+    {{ .CommonLabels.alertname }} 🔥 
+
+    {{- if eq .Status "resolved"}}
+    Status: [{{ .Status | toUpper -}}:{{ .Alerts.Resolved | len }}{{- end -}}
+    {{ .CommonLabels.alertname }} ✅
+{{- end }}
+
+
+{{/* Cor do anexo do Telegram (aparece como linha ao lado do alerta )*/}}
+{{ define "Telegram.color" -}}
+    {{ if eq .Status "firing" -}}
+        {{ if eq .CommonLabels.severity "warning" -}}
+            warning
+        {{- else if eq .CommonLabels.severity "critical" -}}
+            danger
+        {{- else -}}
+            #439FE0
+        {{- end -}}
+    {{ else -}}
+    good
+    {{- end }}
+{{- end }}
+
+{{/* O texto a ser exibido no alerta */}}
+{{ define "Telegram.text" -}}
+
+    {{ template "__alert_severity" . }}
+    {{- if (index .Alerts 0).Annotations.summary }}
+    {{- "\n" -}}
+    *Summary:* {{ (index .Alerts 0).Annotations.summary }}
+    {{- end }}
+
+{{- end }}

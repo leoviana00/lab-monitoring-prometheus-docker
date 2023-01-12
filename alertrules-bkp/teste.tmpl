@@ -1,0 +1,9 @@
+{{ define "Telegram.teste" -}}
+    {{ range .Alerts }}
+        *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`📊
+        *Description:* {{ .Annotations.description }}
+        *Details:*
+    {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
+    {{ end }}
+    {{ end }}
+{{ end }}

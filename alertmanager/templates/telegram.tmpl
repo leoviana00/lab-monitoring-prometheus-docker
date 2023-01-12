@@ -1,63 +1,44 @@
-{{/* Link de silêncio do Alertmanager */}}
-{{ define "__alert_silence_link" -}}
-    {{ .ExternalURL }}/#/silences/new?filter=%7B
-    {{- range .CommonLabels.SortedPairs -}}
-        {{- if ne .Name "alertname" -}}
-            {{- .Name }}%3D"{{- .Value -}}"%2C%20
-        {{- end -}}
-    {{- end -}}
-    alertname%3D"{{- .CommonLabels.alertname -}}"%7D
-{{- end }}
-
-{{/* Gravidade do alerta */}}
-{{ define "Telegram.severity" -}}
-    {{- if eq .CommonLabels.severity "critical" -}}
-    Severity: {{ .CommonLabels.severity | toUpper }} 🔴 
-    {{- else if eq .CommonLabels.severity "warning" -}}
-    Severity: {{ .CommonLabels.severity | toUpper }} 🌕
-    {{- else if eq .CommonLabels.severity "info" -}}
-    Severity: {{ .CommonLabels.severity | toUpper }} 🔵
-    {{- else -}}
-    *Severity:* :question: {{ .CommonLabels.severity }}
-    {{- end }}
-{{- end }}
-
 {{/* Título do alerta do Telegram */}}
 {{ define "Telegram.title" -}}
-    Status: 
-    [{{ .Status | toUpper -}}
-    {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}} 
-    {{ .CommonLabels.alertname }} 🔥 
+    {{if eq .Status "firing"}}
+    <b>Status:</b> {{.Status | toUpper }} 🔥
+    {{end}}
 
-    Status: 
-    [{{ .Status | toUpper -}}
-    {{ if eq .Status "resolved" }}:{{ .Alerts.Resolved | len }}{{- end -}}
-    {{ .CommonLabels.alertname }} ✅
+    {{- if eq .Status "inactive"}}
+    <b>Status:</b>{{.Status | toUpper}} ✅
+    {{end}}
+{{- end }}
+
+{{ define "Telegram.alertname" -}}
+    <b>Alerta:</b> {{ .CommonLabels.alertname }}
+{{- end }}
+
+{{ define "Telegram.instance" -}}
+    <b>Instancia:</b> {{ .CommonLabels.instance }}
+{{- end }}
+
+{{ define "Telegram.description" -}}
+    <b>Descricao:</b> {{.CommonAnnotations.description}}
+{{- end }}
+
+{{ define "Telegram.summary" -}}
+    <b>Resumo:</b> {{.CommonAnnotations.summary}}
 {{- end }}
 
 
-{{/* Cor do anexo do Telegram (aparece como linha ao lado do alerta )*/}}
-{{ define "Telegram.color" -}}
-    {{ if eq .Status "firing" -}}
-        {{ if eq .CommonLabels.severity "warning" -}}
-            warning
-        {{- else if eq .CommonLabels.severity "critical" -}}
-            danger
-        {{- else -}}
-            #439FE0
-        {{- end -}}
-    {{ else -}}
-    good
+
+{{ define "Telegram.severity" -}}
+    {{- if eq .CommonLabels.severity "critical" -}}
+    <b>Severidade:</b> Critical 🔴
+    {{- else if eq .CommonLabels.severity "warning" -}}
+    <b>Severidade:</b> Warning 🌕
+    {{- else if eq .CommonLabels.severity "info" -}}
+    <b>Severidade:</b> Info 🔵
+    {{- else -}}
+    <b>Severidade:</b> :question: {{ .CommonLabels.severity }}
     {{- end }}
 {{- end }}
 
-{{/* O texto a ser exibido no alerta */}}
-{{ define "Telegram.text" -}}
-
-    {{ template "__alert_severity" . }}
-    {{- if (index .Alerts 0).Annotations.summary }}
-    {{- "\n" -}}
-    *Summary:* {{ (index .Alerts 0).Annotations.summary }}
-    {{- end }}
-
+{{ define "Telegram.dashboard" -}}
+    <b>Resumo:</b> 'http://192.168.1.10:9090/alerts?search='
 {{- end }}
