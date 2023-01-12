@@ -50,3 +50,11 @@ scrape_configs:
     - targets: ['nodeexporter:9100']
       labels:
         alias: 'nodeexporter'
+
+  - job_name: 'pushgateway'
+    scrape_interval: 10s
+    honor_labels: true
+    static_configs:
+      - targets: ['pushgateway:9091']
+        labels:
+          alias: 'pushgateway'

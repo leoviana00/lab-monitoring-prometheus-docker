@@ -12,15 +12,19 @@ receivers:
 #------------------------------------------------------------------
 - name: 'alertmanager-telegram'
   telegram_configs:
-    - send_resolved: false
+    - send_resolved: true
       bot_token: 
       api_url: 'https://api.telegram.org'
       chat_id: 
       parse_mode: "HTML"
       message:  |
           {{ template "Telegram.title" . }}
+          {{ template "Telegram.alertname" . }}
+          {{ template "Telegram.instance" . }}
+          {{ template "Telegram.summary" . }}
+          {{ template "Telegram.description" . }}
           {{ template "Telegram.severity" . }}
- 
+          {{ template "Telegram.dashboard" . }}
 
 templates:
  - '/etc/alertmanager/templates/telegram.tmpl'
