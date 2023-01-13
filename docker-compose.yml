@@ -32,14 +32,13 @@ services:
       ports:
         - "3000:3000"
       container_name: grafana
+      env_file:
+        - ./grafana/grafana.env
       volumes:
         - grafana_data:/var/lib/grafana
+        - grafana_conf:/etc/grafana
+        - grafana_logs:/var/logs/grafana
         - ./grafana/provisioning:/etc/grafana/provisioning
-      environment:
-        - GF_SECURITY_ADMIN_USER=${ADMIN_USER}
-        - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD}
-        - GF_USERS_ALLOW_SIGN_UP=false
-        - GF_INSTALL_PLUGINS=${GF_INSTALL_PLUGINS}
       depends_on:
         - prometheus
       labels:
@@ -51,6 +50,8 @@ services:
   alertmanager:
     image: prom/alertmanager:latest
     container_name: alertmanager
+    env_file:
+      - ./alertmanager/telegram.env
     volumes:
       - ./alertmanager:/etc/alertmanager
     command:
@@ -122,4 +123,6 @@ services:
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    grafana_conf: {}
+    grafana_logs: {}
 
