@@ -30,7 +30,7 @@
     - [x] [Definir configuração do prometheus](./prometheus/config/prometheus.yml)
 2. [x] [Subir Grafana](./docker-compose.yml) [ Visualização das métricas ] http://<host-ip>:3000
     - [x] [Criar arquivo de configuração do datasouce para integração automática com o Prometheus](./grafana/provisioning/datasources/datasource.yml)
-    - [x] [Criar arquivo grafana.env para credenciais seguido esse exemplo](./grafana/grafana-example.env)
+    - [x] Criar arquivo grafana.env para credenciais seguido esse exemplo: [grafana-example.env](./grafana/grafana-example.env)
     - [x] [Criar dashboard para visualizar metricas dos contêiners](./grafana/provisioning/dashboards/docker_containers.json)
     - [x] [Criar dashboard para visualizar metricas dos hosts](./grafana/provisioning/dashboards/docker_host.json)
     - [x] [Criar dashboard para visualizar metricas dos targets](./grafana/provisioning/dashboards/monitor_services.json)
@@ -44,7 +44,7 @@
         - [ ] [Serviços Dockerizados](./prometheus/config/alert.rules) [`Andamento`]
       - [ ] Receber notificação de alertas via Telegram [`Andamento`]
         - [x] [Criar token bot telegram e chat](https://telegram.me/BotFather)
-        - [x] [Criar arquivo telegram.env com informações do bot_token e chat_id baseado nesse exemplo](./alertmanager/telegram-example.env)
+        - [x] Criar arquivo telegram.env com informações do bot_token e chat_id baseado nesse exemplo [telegram-example.env](./alertmanager/telegram-example.env)
         - [ ] [Criar templates de notificação para envio de notificações](./alertmanager/templates/telegram.tmpl) [`Andamento`]
 
 ## ✨ Execução
