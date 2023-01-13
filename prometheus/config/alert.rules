@@ -2,11 +2,33 @@ groups:
 
 - name: Serviços dockerizados
   rules:
-  - alert: Container app down
+
+  # Acione um alerta se um contêiner estiver inativo por mais de 30 segundos:
+  - alert: Inatividade do serviço App
     expr: absent(container_memory_usage_bytes{name="app"})
-    for: 30s
+    for: 0s
     labels:
       severity: critical
     annotations:
       summary: "App down"
       description: "O contêiner do aplicativo App está inativo por mais de 30 segundos."
+
+  # Acione um alerta se um contêiner estiver usando mais de 10% do total de núcleos da CPU por mais de 30 segundos:
+  - alert: Alto uso de CPU - Serviço App
+    expr: sum(rate(container_cpu_usage_seconds_total{name="app"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Alto uso de CPU do Serviço App"
+      description: "O uso de CPU do Serviço App está {{ humanize $value}}%."
+
+  # Acione um alerta se um contêiner estiver usando mais de 1,2 GB de RAM por mais de 30 segundos:
+  - alert: Alto uso de Memória - Serviço App
+    expr: sum(container_memory_usage_bytes{name="app"}) > 1200000000
+    for: 30s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Alto uso de Memória do Serviço App"
+      description: "O consumo de memória do Serviço App está em {{ humanize $value}}."
