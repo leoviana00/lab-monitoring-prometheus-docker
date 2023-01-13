@@ -52,11 +52,20 @@ scrape_configs:
         alias: 'nodeexporter'
 
 # Aqui é o próprio Pushgateway.
-  # - job_name: 'pushgateway'
-  #   scrape_interval: 10s
-  #   honor_labels: true
-  #   static_configs:
-  #     - targets: ['pushgateway:9091']
-  #       labels:
-  #         alias: 'pushgateway'
+  - job_name: 'cadvisor_cliente'
+    scrape_interval: 10s
+    honor_labels: true
+    static_configs:
+      - targets: ['10.116.0.3:8080']
+        labels:
+          alias: 'cadvisor_cliente'
+
+# Aqui é o próprio Pushgateway.
+  - job_name: 'nodeexporter_cliente'
+    scrape_interval: 10s
+    honor_labels: true
+    static_configs:
+      - targets: ['10.116.0.3:9100']
+        labels:
+          alias: 'nodeexporter_cliente'          
 
