@@ -42,7 +42,7 @@
 - SUbindo os serviços
 
 ```bash
-docker-compose -d
+docker-compose up -d
 ```
 
 ```console
