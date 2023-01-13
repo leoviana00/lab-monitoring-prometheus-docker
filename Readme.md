@@ -25,15 +25,26 @@
 
 ## 🛠️ Etapas serem feitas
 
-1. [ ] Criar token bot telegram e chat
-2. [ ] Definir configuração do prometheus 
-3. [ ] Criar regras de alertas para:
-    - [ ] Services Targets
-    - [ ] Host
-    - [ ] Serviços Dockerizados
-4. [ ] Criar templates de notificação para o alertmanager
-5. [ ] Definir configuração do alertmanager para envio das notificações
-6. [ ] Integração do Grafana com Prometheus e criação de dashboards para visualização das métricas
+
+1. [ ] Subir Prometheus 
+    - [ ] Definir configuração do prometheus
+2. [ ] Subir Grafana
+    - [ ] Criar arquivo de configuração do datasouce para integração automática com o Prometheus
+    - [ ] Criar arquivo de variáveis de ambiente para credenciais
+    - [ ] Criar dashboard para visualizar metricas dos contêiners
+    - [ ] Criar dashboard para visualizar metricas dos hosts
+    - [ ] Criar dashboard para visualizar metricas dos targets
+3. [ ] Subir Node Exporter para coletar métricas do Host
+4. [ ] Subir Cadvisor para coletar métricas dos serviços contêinerizados
+5. [ ] Subir alertmanager 
+    - [ ] Setup Alertas
+      - [ ] Criar regras de alertas para:
+        - [ ] Services Targets
+        - [ ] Host
+        - [ ] Serviços Dockerizados
+      - [ ] Receber notificação de alertas via Telegram
+        - [ ] Criar token bot telegram e chat
+        - [ ] Criar templates de notificação para envio de notificações
 
 ## ✨ Execução
 
