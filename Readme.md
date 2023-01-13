@@ -26,7 +26,7 @@
 ## 🛠️ Etapas serem feitas
 
 
-1. [x] Subir Prometheus [ Metrics Database ] http://<host-ip>:9090
+1. [x] Subir Prometheus [ Metrics Database ] `http://<host-ip>:9090`
     - [x] Definir configuração do prometheus
 2. [x] Subir Grafana [ Visualização das métricas ] http://<host-ip>:3000
     - [x] Criar arquivo de configuração do datasouce para integração automática com o Prometheus
@@ -34,9 +34,9 @@
     - [x] Criar dashboard para visualizar metricas dos contêiners
     - [x] Criar dashboard para visualizar metricas dos hosts
     - [x] Criar dashboard para visualizar metricas dos targets
-3. [x] Subir Node Exporter [ Coletor de métricas do host ] http://<host-ip>:9100
-4. [x] Subir Cadvisor [ Coletor de métricas do container ] http://<host-ip>:8080
-5. [x] Subir alertmanager [ Gerenciamento de alertas ] http://<host-ip>:9093
+3. [x] Subir Node Exporter [ Coletor de métricas do host ] `http://<host-ip>:9100`
+4. [x] Subir Cadvisor [ Coletor de métricas do container ] `http://<host-ip>:8080`
+5. [x] Subir alertmanager [ Gerenciamento de alertas ] `http://<host-ip>:9093`
     - [ ] Setup Alertas [`Andamento`]
       - [ ] Criar regras de alertas para:
         - [ ] Services Targets [`Andamento`]
