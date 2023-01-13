@@ -46,6 +46,7 @@
         - [x] [Criar token bot telegram e chat](https://telegram.me/BotFather)
         - [x] Criar arquivo `telegram.env` com informações do bot_token e chat_id baseado nesse exemplo [telegram-example.env](./alertmanager/telegram-example.env)
         - [ ] [Criar templates de notificação para envio de notificações](./alertmanager/templates/telegram.tmpl) [`Andamento`]
+6. [x] [Configurar o k6 para teste de carga da aplicação](./k6/Readme.md)
 
 ## ✨ Execução
 

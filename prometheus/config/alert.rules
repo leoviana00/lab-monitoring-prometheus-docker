@@ -15,7 +15,8 @@ groups:
 
   # Acione um alerta se um contêiner estiver usando mais de 10% do total de núcleos da CPU por mais de 30 segundos:
   - alert: Alto uso de CPU - Serviço App
-    expr: sum(rate(container_cpu_usage_seconds_total{name="app"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
+    #expr: sum(rate(container_cpu_usage_seconds_total{name="app"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
+    expr: rate(container_cpu_user_seconds_total{image!=""}[5m]) * 100 > 10
     for: 30s
     labels:
       severity: warning
