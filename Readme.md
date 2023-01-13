@@ -48,7 +48,7 @@
 
 ## ✨ Execução
 
-- Adicionar `bot_token` e o `chat_id` no `./alertmanager/config.yml`
+- Adicionar `bot_token` e o `chat_id` no [config.yml](./alertmanager/config.yml)
 
 - SUbindo os serviços
 
@@ -81,19 +81,23 @@ prometheus     /bin/prometheus --config.f ...   Up             0.0.0.0:9090->909
   <img alt="Prometheues" src="images/cadvisor.png">
 </p>
 
-- Grafana - Monitoring Host
+- Grafana 
+  - User: admin
+  - Password: admin
+
+- [Monitoring Host](./grafana/provisioning/dashboards/docker_host.json)
 
 <p align="center">
   <img alt="Grafana" src="images/docker_host_dashboard.png">
 </p>
 
-- Grafana - Monitoring Docker
+- [Monitoring Docker](./grafana/provisioning/dashboards/docker_containers.json)
 
 <p align="center">
   <img alt="Grafana" src="images/docker_container_dashboard.png">
 </p>
 
-- Grafana - Monitoring Services
+- [Monitoring Services](./grafana/provisioning/dashboards/monitor_services.json)
 
 <p align="center">
   <img alt="Grafana" src="images/monitor_service_dashboard.png">
