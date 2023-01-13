@@ -26,17 +26,17 @@
 ## 🛠️ Etapas serem feitas
 
 
-1. [x] Subir Prometheus 
+1. [x] Subir Prometheus [ Metrics Database ] http://<host-ip>:9090
     - [x] Definir configuração do prometheus
-2. [x] Subir Grafana
+2. [x] Subir Grafana [ Visualização das métricas ] http://<host-ip>:3000
     - [x] Criar arquivo de configuração do datasouce para integração automática com o Prometheus
     - [x] Criar arquivo de variáveis de ambiente para credenciais
     - [x] Criar dashboard para visualizar metricas dos contêiners
     - [x] Criar dashboard para visualizar metricas dos hosts
     - [x] Criar dashboard para visualizar metricas dos targets
-3. [x] Subir Node Exporter para coletar métricas do Host
-4. [x] Subir Cadvisor para coletar métricas dos serviços contêinerizados
-5. [x] Subir alertmanager 
+3. [x] Subir Node Exporter [ Coletor de métricas do host ] http://<host-ip>:9100
+4. [x] Subir Cadvisor [ Coletor de métricas do container ] http://<host-ip>:8080
+5. [x] Subir alertmanager [ Gerenciamento de alertas ] http://<host-ip>:9093
     - [ ] Setup Alertas [`Andamento`]
       - [ ] Criar regras de alertas para:
         - [ ] Services Targets [`Andamento`]
@@ -65,19 +65,17 @@ cadvisor       /usr/bin/cadvisor -logtostderr   Up (healthy)   0.0.0.0:8080->808
 grafana        /run.sh                          Up             0.0.0.0:3000->3000/tcp,:::3000->3000/tcp
 nodeexporter   /bin/node_exporter --path. ...   Up             0.0.0.0:9100->9100/tcp,:::9100->9100/tcp
 prometheus     /bin/prometheus --config.f ...   Up             0.0.0.0:9090->9090/tcp,:::9090->9090/tcp
-pushgateway    /bin/pushgateway                 Up             0.0.0.0:9091->9091/tcp,:::9091->9091/tcp
-redis          docker-entrypoint.sh redis ...   Up             0.0.0.0:6379->6379/tcp,:::6379->6379/tcp
 ```
 
 ## 📊 Dashboards
 
-- Prometheus
+- Prometheus 
 
 <p align="center">
   <img alt="Prometheues" src="images/prometheus_dashboard.png">
 </p>
 
-- Cadvisor
+- Cadvisor 
 
 <p align="center">
   <img alt="Prometheues" src="images/cadvisor.png">
