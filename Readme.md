@@ -26,25 +26,25 @@
 ## 🛠️ Etapas serem feitas
 
 
-1. [ ] Subir Prometheus 
-    - [ ] Definir configuração do prometheus
-2. [ ] Subir Grafana
-    - [ ] Criar arquivo de configuração do datasouce para integração automática com o Prometheus
-    - [ ] Criar arquivo de variáveis de ambiente para credenciais
-    - [ ] Criar dashboard para visualizar metricas dos contêiners
-    - [ ] Criar dashboard para visualizar metricas dos hosts
-    - [ ] Criar dashboard para visualizar metricas dos targets
-3. [ ] Subir Node Exporter para coletar métricas do Host
-4. [ ] Subir Cadvisor para coletar métricas dos serviços contêinerizados
-5. [ ] Subir alertmanager 
-    - [ ] Setup Alertas
+1. [x] Subir Prometheus 
+    - [x] Definir configuração do prometheus
+2. [x] Subir Grafana
+    - [x] Criar arquivo de configuração do datasouce para integração automática com o Prometheus
+    - [x] Criar arquivo de variáveis de ambiente para credenciais
+    - [x] Criar dashboard para visualizar metricas dos contêiners
+    - [x] Criar dashboard para visualizar metricas dos hosts
+    - [x] Criar dashboard para visualizar metricas dos targets
+3. [x] Subir Node Exporter para coletar métricas do Host
+4. [x] Subir Cadvisor para coletar métricas dos serviços contêinerizados
+5. [x] Subir alertmanager 
+    - [ ] Setup Alertas [`Andamento`]
       - [ ] Criar regras de alertas para:
-        - [ ] Services Targets
-        - [ ] Host
-        - [ ] Serviços Dockerizados
-      - [ ] Receber notificação de alertas via Telegram
-        - [ ] Criar token bot telegram e chat
-        - [ ] Criar templates de notificação para envio de notificações
+        - [ ] Services Targets [`Andamento`]
+        - [ ] Host [`Andamento`]
+        - [ ] Serviços Dockerizados [`Andamento`]
+      - [ ] Receber notificação de alertas via Telegram [`Andamento`]
+        - [x] Criar token bot telegram e chat
+        - [ ] Criar templates de notificação para envio de notificações [`Andamento`]
 
 ## ✨ Execução
 
