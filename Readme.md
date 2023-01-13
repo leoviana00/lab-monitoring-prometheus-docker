@@ -27,24 +27,24 @@
 
 
 1. [x] Subir Prometheus [ Metrics Database ] `http://<host-ip>:9090`
-    - [x] Definir configuração do prometheus
+    - [x] [Definir configuração do prometheus](./prometheus/config/prometheus.yml)
 2. [x] Subir Grafana [ Visualização das métricas ] http://<host-ip>:3000
-    - [x] Criar arquivo de configuração do datasouce para integração automática com o Prometheus
-    - [x] Criar arquivo de variáveis de ambiente para credenciais
-    - [x] Criar dashboard para visualizar metricas dos contêiners
-    - [x] Criar dashboard para visualizar metricas dos hosts
-    - [x] Criar dashboard para visualizar metricas dos targets
+    - [x] [Criar arquivo de configuração do datasouce para integração automática com o Prometheus](./grafana/provisioning/datasources/datasource.yml)
+    - [x] [Criar arquivo de variáveis de ambiente para credenciais](.env)
+    - [x] [Criar dashboard para visualizar metricas dos contêiners](./grafana/provisioning/dashboards/docker_containers.json)
+    - [x] [Criar dashboard para visualizar metricas dos hosts](./grafana/provisioning/dashboards/docker_host.json)
+    - [x] [Criar dashboard para visualizar metricas dos targets](./grafana/provisioning/dashboards/monitor_services.json)
 3. [x] Subir Node Exporter [ Coletor de métricas do host ] `http://<host-ip>:9100`
 4. [x] Subir Cadvisor [ Coletor de métricas do container ] `http://<host-ip>:8080`
 5. [x] Subir alertmanager [ Gerenciamento de alertas ] `http://<host-ip>:9093`
     - [ ] Setup Alertas [`Andamento`]
       - [ ] Criar regras de alertas para:
-        - [ ] Services Targets [`Andamento`]
-        - [ ] Host [`Andamento`]
-        - [ ] Serviços Dockerizados [`Andamento`]
+        - [ ] [Services Targets](./prometheus/config/alert.rules) [`Andamento`]
+        - [ ] [Host](./prometheus/config/alert.rules) [`Andamento`]
+        - [ ] [Serviços Dockerizados](./prometheus/config/alert.rules) [`Andamento`]
       - [ ] Receber notificação de alertas via Telegram [`Andamento`]
-        - [x] Criar token bot telegram e chat
-        - [ ] Criar templates de notificação para envio de notificações [`Andamento`]
+        - [x] [Criar token bot telegram e chat](https://telegram.me/BotFather)
+        - [ ] [Criar templates de notificação para envio de notificações](./alertmanager/templates/telegram.tmpl) [`Andamento`]
 
 ## ✨ Execução
 
