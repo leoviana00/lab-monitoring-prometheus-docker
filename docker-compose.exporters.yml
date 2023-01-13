@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  #-------------------------------------
+  #         EXPORTER METRICS DOCKER
+  #-------------------------------------
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest 
+    container_name: cadvisor
+    user: root
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    devices:
+      - /dev/kmsg:/dev/kmsg
+    labels:
+      org.label-schema.group: "monitoring"
+    
+  #-------------------------------------
+  #          EXPORTER METRICS HOST
+  #-------------------------------------
+  nodeexporter:
+    image: prom/node-exporter:latest
+    container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    ports:
+      - 9100:9100
+    labels:
+      org.label-schema.group: "monitoring"
