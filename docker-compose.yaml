@@ -106,6 +106,8 @@ services:
   app:
     build: .
     container_name: app
+    restart: always
+    tty: true
     ports:
     - 8081:80
 

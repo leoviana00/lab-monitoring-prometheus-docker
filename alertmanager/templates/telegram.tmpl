@@ -3,7 +3,6 @@
     {{if eq .Status "firing"}}
     <b>Status:</b> {{.Status | toUpper }} 🔥
     {{end}}
-
     {{- if eq .Status "inactive"}}
     <b>Status:</b>{{.Status | toUpper}} ✅
     {{end}}
