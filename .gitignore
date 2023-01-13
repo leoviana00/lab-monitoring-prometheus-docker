@@ -1,0 +1,7 @@
+# envs grafana
+*grafana.env
+**/grafana.env
+
+# envs tekegram
+*telegram.env
+**/telegram.env

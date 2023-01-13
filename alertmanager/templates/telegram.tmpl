@@ -3,7 +3,7 @@
     {{if eq .Status "firing"}}
     <b>Status:</b> {{.Status | toUpper }} 🔥
     {{end}}
-    {{- if eq .Status "inactive"}}
+    {{- if eq .Status "resolved"}}
     <b>Status:</b>{{.Status | toUpper}} ✅
     {{end}}
 {{- end }}
@@ -39,5 +39,8 @@
 {{- end }}
 
 {{ define "Telegram.dashboard" -}}
-    <b>URL:</b> 'http://monit.yevo.com.br:9090/alerts?search='
+
+    <b>Prometheus:</b> 'http://192.168.1.10:9090/alerts?search='
+    <b>Grafana:</b> 'http://192.168.1.10:3000/alerting/list'
+
 {{- end }}
