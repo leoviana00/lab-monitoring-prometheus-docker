@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
 
@@ -63,18 +63,18 @@ services:
       - /dev/disk/:/dev/disk:ro
     devices:
       - /dev/kmsg:/dev/kmsg
-    depends_on:
-      - redis
+    # depends_on:
+    #   - redis
     labels:
       org.label-schema.group: "monitoring"
     
-  redis:
-    image: redis:latest
-    container_name: redis
-    ports:
-      - 6379:6379
-    labels:
-      org.label-schema.group: "monitoring"
+  # redis:
+  #   image: redis:latest
+  #   container_name: redis
+  #   ports:
+  #     - 6379:6379
+  #   labels:
+  #     org.label-schema.group: "monitoring"
   
   nodeexporter:
     image: prom/node-exporter:latest
@@ -94,14 +94,14 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
-  pushgateway:
-    image: prom/pushgateway
-    container_name: pushgateway
-    restart: unless-stopped
-    ports:
-      - 9091:9091
-    labels:
-      org.label-schema.group: "monitoring"
+  # pushgateway:
+  #   image: prom/pushgateway
+  #   container_name: pushgateway
+  #   restart: unless-stopped
+  #   ports:
+  #     - 9091:9091
+  #   labels:
+  #     org.label-schema.group: "monitoring"
 
 
   app:

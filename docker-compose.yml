@@ -12,7 +12,7 @@ services:
     ports:
       - 9090:9090
     command:
-      - '--config.file=/etc/prometheus/prometheus.yaml'
+      - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/etc/prometheus/console_libraries'
       - '--web.console.templates=/etc/prometheus/consoles'
@@ -66,11 +66,9 @@ services:
   #  CADVISOR - EXPORTAR METRICAS DOCKER
   #-------------------------------------
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest 
+    image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     user: root
-    expose:
-      - 8080
     ports:
       - 8080:8080
     volumes:
@@ -78,8 +76,11 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
     devices:
       - /dev/kmsg:/dev/kmsg
+    # depends_on:
+    #   - redis
     labels:
       org.label-schema.group: "monitoring"
     
