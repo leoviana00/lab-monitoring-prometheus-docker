@@ -26,17 +26,17 @@
 ## 🛠️ Etapas serem feitas
 
 
-1. [x] Subir Prometheus [ Metrics Database ] `http://<host-ip>:9090`
+1. [x] [Subir Prometheus](./docker-compose.yml) [ Metrics Database ] `http://<host-ip>:9090`
     - [x] [Definir configuração do prometheus](./prometheus/config/prometheus.yml)
-2. [x] Subir Grafana [ Visualização das métricas ] http://<host-ip>:3000
+2. [x] [Subir Grafana](./docker-compose.yml) [ Visualização das métricas ] http://<host-ip>:3000
     - [x] [Criar arquivo de configuração do datasouce para integração automática com o Prometheus](./grafana/provisioning/datasources/datasource.yml)
     - [x] [Criar arquivo de variáveis de ambiente para credenciais](.env)
     - [x] [Criar dashboard para visualizar metricas dos contêiners](./grafana/provisioning/dashboards/docker_containers.json)
     - [x] [Criar dashboard para visualizar metricas dos hosts](./grafana/provisioning/dashboards/docker_host.json)
     - [x] [Criar dashboard para visualizar metricas dos targets](./grafana/provisioning/dashboards/monitor_services.json)
-3. [x] Subir Node Exporter [ Coletor de métricas do host ] `http://<host-ip>:9100`
-4. [x] Subir Cadvisor [ Coletor de métricas do container ] `http://<host-ip>:8080`
-5. [x] Subir alertmanager [ Gerenciamento de alertas ] `http://<host-ip>:9093`
+3. [x] [Subir Node Exporter](./docker-compose.yml) [ Coletor de métricas do host ] `http://<host-ip>:9100`
+4. [x] [Subir Cadvisor](./docker-compose.yml) [ Coletor de métricas do container ] `http://<host-ip>:8080`
+5. [x] [Subir alertmanager](./docker-compose.yml) [ Gerenciamento de alertas ] `http://<host-ip>:9093`
     - [ ] Setup Alertas [`Andamento`]
       - [ ] Criar regras de alertas para:
         - [ ] [Services Targets](./prometheus/config/alert.rules) [`Andamento`]
