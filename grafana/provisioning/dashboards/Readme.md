@@ -6,7 +6,7 @@
   - Password: admin
   - Url: http://localhost:3000
 
-1. [Monitoring Host Dashboard](./grafana/provisioning/dashboards/docker_host.json)
+1. Monitoring Host Dashboard - [Configfile](./docker_host.json)
 
 <p align="center">
   <img alt="Grafana" src="../../../images/docker_host_dashboard-1.png">
@@ -36,7 +36,7 @@ Você pode encontrar o valor certo para o seu sistema no Prometheus http://<host
 node_filesystem_free_bytes
 ```
 
-2. [Monitoring Containers Docker](./grafana/provisioning/dashboards/docker_containers.json)
+2. Monitoring Containers Docker - [Configfile](./grafana/provisioning/dashboards/docker_containers.json)
 
 <p align="center">
   <img alt="Grafana" src="../../../images/docker_container_dashboard-1.png">
@@ -53,7 +53,7 @@ O Docker Containers Dashboard mostra as principais métricas para monitorar cont
 - Gráfico de uso de entrada da rede de contêiner
 - Gráfico de uso de saída da rede de contêiner
 
-3. [Monitoring Services](./grafana/provisioning/dashboards/monitor_services.json)
+3. Monitoring Services - [Configfile](./grafana/provisioning/dashboards/monitor_services.json)
 
 <p align="center">
   <img alt="Grafana" src="../../../images/monitor_service_dashboard-1.png">
