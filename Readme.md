@@ -34,6 +34,7 @@
     - [x] [Criar dashboard para visualizar metricas dos contêiners](./grafana/provisioning/dashboards/docker_containers.json)
     - [x] [Criar dashboard para visualizar metricas dos hosts](./grafana/provisioning/dashboards/docker_host.json)
     - [x] [Criar dashboard para visualizar metricas dos targets](./grafana/provisioning/dashboards/monitor_services.json)
+    - [X] [Documentação das dashboards criadas](./grafana/provisioning/dashboards/Readme.md)
 3. [x] [Subir Node Exporter](./docker-compose.yml) [ Coletor de métricas do host ] `http://<host-ip>:9100`
 4. [x] [Subir Cadvisor](./docker-compose.yml) [ Coletor de métricas do container ] `http://<host-ip>:8080`
 5. [x] [Subir alertmanager](./docker-compose.yml) [ Gerenciamento de alertas ] `http://<host-ip>:9093`
@@ -42,10 +43,11 @@
         - [ ] [Services Targets](./prometheus/config/alert.rules) [`Andamento`]
         - [ ] [Host](./prometheus/config/alert.rules) [`Andamento`]
         - [ ] [Serviços Dockerizados](./prometheus/config/alert.rules) [`Andamento`]
+        - [x] [Documentação dos alertas criados](./grafana/provisioning/alertas/Readme.md)
       - [ ] Receber notificação de alertas via Telegram [`Andamento`]
         - [x] [Criar token bot telegram e chat](https://telegram.me/BotFather)
         - [x] Criar arquivo `telegram.env` com informações do bot_token e chat_id baseado nesse exemplo [telegram-example.env](./alertmanager/telegram-example.env)
-        - [ ] [Criar templates de notificação para envio de notificações](./alertmanager/templates/telegram.tmpl) [`Andamento`]
+        - [x] [Criar templates de notificação para envio de notificações](./alertmanager/templates/telegram.tmpl) 
 6. [x] [Configurar o k6 para teste de carga da aplicação](./k6/Readme.md)
 7. [x] [Script para stress da CPU - Simular falhas e testar alertas](./chaos/Readme.md)
 
@@ -69,63 +71,6 @@ grafana        /run.sh                          Up             0.0.0.0:3000->300
 nodeexporter   /bin/node_exporter --path. ...   Up             0.0.0.0:9100->9100/tcp,:::9100->9100/tcp
 prometheus     /bin/prometheus --config.f ...   Up             0.0.0.0:9090->9090/tcp,:::9090->9090/tcp
 ```
-
-## 📊 Dashboards
-
-- Prometheus 
-
-<p align="center">
-  <img alt="Prometheues" src="images/prometheus_dashboard.png">
-</p>
-
-- Cadvisor 
-
-<p align="center">
-  <img alt="Prometheues" src="images/cadvisor.png">
-</p>
-
-- Grafana 
-  - User: admin
-  - Password: admin
-
-- [Monitoring Host](./grafana/provisioning/dashboards/docker_host.json)
-
-<p align="center">
-  <img alt="Grafana" src="images/docker_host_dashboard.png">
-</p>
-
-- [Monitoring Docker](./grafana/provisioning/dashboards/docker_containers.json)
-
-<p align="center">
-  <img alt="Grafana" src="images/docker_container_dashboard.png">
-</p>
-
-- [Monitoring Services](./grafana/provisioning/dashboards/monitor_services.json)
-
-<p align="center">
-  <img alt="Grafana" src="images/monitor_service_dashboard.png">
-</p>
-
-## 🔥 Alertas
-
-- Grafana - Alertas
-
-<p align="center">
-  <img alt="Grafana" src="images/dashboard_alertas.png">
-</p>
-
-- Prometheus - Alertas
-
-<p align="center">
-  <img alt="Grafana" src="images/dash_prometheus_alertas.png">
-</p>
-
-- Telegram - Alertas
-
-<p align="center">
-  <img alt="Grafana" src="images/telegra.png">
-</p>
-
  
 ## 📄 Licença
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
