@@ -9,8 +9,8 @@
 1. [Monitoring Host Dashboard](./grafana/provisioning/dashboards/docker_host.json)
 
 <p align="center">
-  <img alt="Grafana" src="../images/docker_host_dashboard-1.png">
-  <img alt="Grafana" src="../images/docker_host_dashboard-2.png">
+  <img alt="Grafana" src="../../../images/docker_host_dashboard-1.png">
+  <img alt="Grafana" src="../../../images/docker_host_dashboard-2.png">
 </p>
 
 
@@ -39,8 +39,8 @@ node_filesystem_free_bytes
 2. [Monitoring Containers Docker](./grafana/provisioning/dashboards/docker_containers.json)
 
 <p align="center">
-  <img alt="Grafana" src="../images/docker_container_dashboard-1.png">
-  <img alt="Grafana" src="../images/docker_container_dashboard-2.png">
+  <img alt="Grafana" src="../../../images/docker_container_dashboard-1.png">
+  <img alt="Grafana" src="../../../images/docker_container_dashboard-2.png">
 </p>
 
 O Docker Containers Dashboard mostra as principais métricas para monitorar contêineres em execução:
@@ -56,11 +56,11 @@ O Docker Containers Dashboard mostra as principais métricas para monitorar cont
 3. [Monitoring Services](./grafana/provisioning/dashboards/monitor_services.json)
 
 <p align="center">
-  <img alt="Grafana" src="../images/monitor_service_dashboard-1.png">
-  <img alt="Grafana" src="../images/monitor_service_dashboard-2.png">
-  <img alt="Grafana" src="../images/monitor_service_dashboard-3.png">
-  <img alt="Grafana" src="../images/monitor_service_dashboard-4.png">
-  <img alt="Grafana" src="../images/monitor_service_dashboard-5.png">
+  <img alt="Grafana" src="../../../images/monitor_service_dashboard-1.png">
+  <img alt="Grafana" src="../../../images/monitor_service_dashboard-2.png">
+  <img alt="Grafana" src="../../../images/monitor_service_dashboard-3.png">
+  <img alt="Grafana" src="../../../images/monitor_service_dashboard-4.png">
+  <img alt="Grafana" src="../../../images/monitor_service_dashboard-5.png">
 </p>
 
 O Monitor Services Dashboard mostra as principais métricas para monitorar os contêineres que compõem a pilha de monitoramento:
