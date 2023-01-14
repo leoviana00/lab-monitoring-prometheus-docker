@@ -7,15 +7,12 @@ route:
     - receiver: 'alertmanager-telegram'
 
 receivers:
-#------------------------------------------------------------------
-#                   TENTATIVA DE NOTIFY TELEGRAM
-#------------------------------------------------------------------
 - name: 'alertmanager-telegram'
   telegram_configs:
     - send_resolved: true
-      bot_token: 
+      bot_token:
       api_url: 'https://api.telegram.org'
-      chat_id: 
+      chat_id:
       parse_mode: "HTML"
       message:  |
           {{ template "Telegram.alert" . }}
