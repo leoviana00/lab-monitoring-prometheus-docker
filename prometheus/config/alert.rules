@@ -1,6 +1,23 @@
 groups:
 
-- name: Serviços dockerizados
+#----------------------------------------------
+# HOST METRICS
+#----------------------------------------------
+- name: Host
+  rules:
+  - alert: Alta carga de CPU
+    expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
+    for: 0m
+    labels:
+      severity: warning
+    annotations:
+      summary: Alta carga de CPU do host (instance {{ $labels.instance }})
+      description: "A carga da CPU é > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+#----------------------------------------------
+# CONTAINER METRICS
+#----------------------------------------------
+- name: Container
   rules:
 
   # Acione um alerta se um contêiner estiver inativo por mais de 30 segundos:
@@ -15,8 +32,7 @@ groups:
 
   # Acione um alerta se um contêiner estiver usando mais de 10% do total de núcleos da CPU por mais de 30 segundos:
   - alert: Alto uso de CPU - Serviço App
-    #expr: sum(rate(container_cpu_usage_seconds_total{name="app"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
-    expr: rate(container_cpu_user_seconds_total{image!=""}[5m]) * 100 > 10
+    expr: sum(rate(container_cpu_usage_seconds_total{name="app"}[1m])) / count(node_cpu_seconds_total{mode="system"}) * 100 > 10
     for: 30s
     labels:
       severity: warning
