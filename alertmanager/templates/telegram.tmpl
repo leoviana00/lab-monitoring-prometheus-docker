@@ -1,15 +1,38 @@
+{{/* Montagem do template - msg especifica para caso de problema e resolvidos*/}}
+{{ define "Telegram.alert" -}}
+    {{if eq .Status "firing"}}
+        {{ template "Telegram.title" . }} 
+        {{ template "Telegram.alertname" . }}
+        {{ template "Telegram.summary" . }}
+        {{ template "Telegram.description" . }}
+        {{ template "Telegram.severity" . }}
+        {{ template "Telegram.prometheus" . }}
+        {{ template "Telegram.grafana" . }}
+    {{end}}
+
+    {{- if eq .Status "resolved"}}
+        {{ template "Telegram.title" . }} 
+        {{ template "Telegram.alertname" . }}
+        {{ template "Telegram.summary" . }}
+        {{ template "Telegram.severity" . }}
+        {{ template "Telegram.prometheus" . }}
+        {{ template "Telegram.grafana" . }}
+    {{end}}
+{{- end }}
+
+
 {{/* Título do alerta do Telegram */}}
 {{ define "Telegram.title" -}}
     {{if eq .Status "firing"}}
-    <b>Status:</b> {{.Status | toUpper }} 🔥
+    <b>PROBLEMA ENCONTRADO</b> 🔥
     {{end}}
     {{- if eq .Status "resolved"}}
-    <b>Status:</b> {{.Status | toUpper}} ✅
+    <b>PROBLEMA RESOLVIDO</b>  ✅
     {{end}}
 {{- end }}
 
 {{ define "Telegram.alertname" -}}
-    <b>Alerta:</b> {{ .CommonLabels.alertname }}
+    <b>Alerta:</b> {{ .CommonLabels.alertname }} 
 {{- end }}
 
 {{ define "Telegram.instance" -}}
@@ -24,13 +47,11 @@
     <b>Resumo:</b> {{.CommonAnnotations.summary}}
 {{- end }}
 
-
-
 {{ define "Telegram.severity" -}}
     {{- if eq .CommonLabels.severity "critical" -}}
     <b>Severidade:</b> Critical 🔴
     {{- else if eq .CommonLabels.severity "warning" -}}
-    <b>Severidade:</b> Warning 🌕
+    <b>Severidade:</b> Warning 🟡
     {{- else if eq .CommonLabels.severity "info" -}}
     <b>Severidade:</b> Info 🔵
     {{- else -}}
@@ -38,7 +59,10 @@
     {{- end }}
 {{- end }}
 
-{{ define "Telegram.dashboard" -}}
-    <b>Prometheus:</b> 'http://192.168.1.10:9090/alerts?search='
-    <b>Grafana:</b> 'http://192.168.1.10:3000/alerting/list'
+{{ define "Telegram.prometheus" -}}
+    <b>Prometheus:</b> 'http://192.168.1.10:9090/alerts?search=' 📊
+{{- end }}
+
+{{ define "Telegram.grafana" -}}
+    <b>Grafana:</b> 'http://192.168.1.10:3000/alerting/list' 📊
 {{- end }}

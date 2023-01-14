@@ -11,8 +11,8 @@ groups:
     labels:
       severity: warning
     annotations:
-      summary: Alta carga de CPU do host (instance {{ $labels.instance }})
-      description: "A carga da CPU é > 80%\n  Valor da carga {{ humanize $value}}"
+      summary: Alta carga de CPU do host 
+      description: "A carga da CPU é maior que 80%.\nValor da carga {{ humanize $value}}"
   
   - alert: Host sem memória
     expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 20
@@ -20,8 +20,8 @@ groups:
     labels:
       severity: warning
     annotations:
-      summary: Host sem memória(instance {{ $labels.instance }})
-      description: "A memória do nó está enchendo (< 20% )\n  Restante: {{ humanize $value}}."
+      summary: Host sem memória
+      description: "A memória do nó está com menos de 20%.\nRestante: {{ humanize $value}}."
 
 #----------------------------------------------
 # CONTAINER METRICS
@@ -57,4 +57,4 @@ groups:
       severity: warning
     annotations:
       summary: "Alto uso de Memória do Serviço App"
-      description: "O consumo de memória do Serviço App está em {{ humanize $value}}."
+      description: "O consumo de memória do Serviço App está maior que 1,2 GB.\nUtilização de memória em: {{ humanize $value}}."
