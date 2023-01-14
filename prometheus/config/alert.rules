@@ -13,6 +13,15 @@ groups:
     annotations:
       summary: Alta carga de CPU do host (instance {{ $labels.instance }})
       description: "A carga da CPU é > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+  
+  - alert: Host sem memória
+    expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: Host sem memória(instance {{ $labels.instance }})
+      description: "A memória do nó está enchendo (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
 #----------------------------------------------
 # CONTAINER METRICS
