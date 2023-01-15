@@ -23,10 +23,10 @@
 {{/* Título do alerta do Telegram */}}
 {{ define "Telegram.title" -}}
     {{if eq .Status "firing"}}
-    <b>PROBLEMA ENCONTRADO</b> 🔥
+    🔥 <b>PROBLEMA ENCONTRADO</b> 🔥
     {{end}}
     {{- if eq .Status "resolved"}}
-    <b>PROBLEMA RESOLVIDO</b>  ✅
+    ✅ <b>PROBLEMA RESOLVIDO</b> ✅
     {{end}}
 {{- end }}
 
